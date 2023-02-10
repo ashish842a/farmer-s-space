@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Rent product- farmer's space </title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+  <link rel="stylesheet" href="/stylesheets/partialsNav.css">
+
+
+</head>
+    <style>
+        .product-image{
+            width: 350px;
+            height: 40px;
+            background-color: rgb(238, 229, 229);
+            display: flex;
+            align-items: center;
+           
+            padding: 0 1vw;
+            cursor: pointer;
+        }
+      
+    </style>
+<body>
+<!-- partial:index.partial.html -->
+  <%- include ./partials/nav.ejs %>
+
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+        <h1 style="font-size: 20px;">Welcome to Farmer's Space</h1>
+      <h2>Rent your product</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <div class="product-image" title="upload image" >
+
+          
+       
+        <form method="post" action="/rentproduct" enctype="multipart/form-data">
+            
+        <div class="upload-image">
+          <input type="file" name="product-image" required>
+        </div>
+      </div>
+          <div class="input_field" style="margin-top: 10px;"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <!-- <input type="text" name="category" placeholder="Category" required /> -->
+            <select name="category" id="cars" required>
+              <option value="Tractor">Tractor</option>
+              <option value="Rotator">Rotator</option>
+              <option value="Seeding Machine">Seeding Machine</option>
+              <option value="Trailer">Trailer</option>
+              <option value="Cultivator">Cultivator</option>
+              <option value="Plough">Plough</option>
+              <option value="Harvestor">Harvestor</option>
+              <option value="Transplanter">Transplanter</option>
+            </select>
+          </div>
+                   
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" name="time" placeholder="Time for rent" required />
+          </div>
+         
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" name="price" placeholder="Price" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="email" name="email" placeholder="Email" value="<%=user.email%>" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" name="phone" placeholder="Phone number" value="<%=user.phone%>" required />
+          </div>
+          
+            
+            <!-- <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div> -->
+          
+          <input class="button" type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/4ecc3dbb0b.js'></script>
+</body>
+</html>

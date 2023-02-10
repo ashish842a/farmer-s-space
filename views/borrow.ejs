@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Barrow - confirm booking</title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+  <link rel="stylesheet" href="/stylesheets/partialsNav.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<%- include ./partials/nav.ejs %>
+
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+        <h1 style="font-size: 20px;">Welcome to Farmer's Space</h1>
+      <h2>Confirm Booking</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form method="post" action="/borrow/<%=product._id%>">
+          
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" name="name" placeholder="Name" value="<%=user.name%>" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="email" name="email" placeholder="Email" value="<%=user.email%>"  required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" name="phone" placeholder="Phone number" value="<%=user.phone%>"  required />
+          </div>
+         
+                   
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="text" name="address" placeholder="Address" value="<%=user.address%>"  required />
+          </div>
+         
+          
+            
+            <!-- <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div> -->
+          
+          <input class="button" type="submit" value="Confirm Booking" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/4ecc3dbb0b.js'></script>
+</body>
+</html>

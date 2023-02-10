@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Order page</title>
+</head>
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="left">
+                <div class="top-left">
+                    <h1 id="logo">Farmer's Space</h1>
+                    <div class="links">
+                        <a href="/profile"><i class="ri-home-3-line"></i>Home</a>
+                        <a href="/dashboard"><i class="ri-user-line"></i>Profile</a>
+                        <a href="/dashboard-order"><i class="ri-shopping-bag-3-line"></i>Order</a>
+                        <a href="/dashboard-rent"><i class="ri-shopping-bag-3-line"></i>Rent product</a>
+                        <a href="/profile/#contact"><i class="ri-contacts-book-2-line"></i>Contact</a>
+                        <a href="/profile/#services"><i class="ri-book-3-line"></i>Services</a>
+                        <a href="/dashboard-message"><i class="ri-message-line"></i>Messages</a>
+                    </div>
+                </div>
+                <div class="bottom-left">
+                    <!-- <img src="https://images.unsplash.com/photo-1674851993254-15766f31879f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt=""> -->
+                    <img src="/images/uploads/<%=loginUser.profilePic%>" alt="">
+
+                     <h4><%=loginUser.name%></h4>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right-nav">
+                    <div class="right-nav-top">
+                        <h1>My Order</h1>
+                        <a href="/logout"><button class="btn">Log Out</button></a>
+                    </div>
+                    <div class="right-nav-btm">
+                        <div class="search">
+                            <i class="ri-search-2-line"></i>
+                            <input type="search" placeholder="Search">
+                        </div>
+                        <div class="filter-btn">
+                            <div class="filter"><i class="ri-filter-2-line"></i>Filter</div>
+                            <i id="grid" class="ri-grid-fill"></i>
+                            <i id="list" class="ri-list-unordered"></i>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="right-container">
+                    <div class="product-area-wrapper grid-view">
+                        <div class="label">
+                            <h4>&nbsp;&nbsp;&nbsp;&nbsp;Items</h4>
+                            <h4>Category</h4>
+                            <h4>Details</h4>
+                            <h4>Price</h4>
+                        </div>
+                       
+                    <% arr.forEach(function(elem){%>
+                        <div class="product">
+                            <div class="img">
+                                <!-- <img src="https://images.unsplash.com/photo-1614977645540-7abd88ba8e56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80" alt=""> -->
+                           <img src="/images/uploads/<%=elem.rentproductimage%>" alt="">
+
+                                <h4><%=elem.category%></h4>
+                            </div>
+                            <div class="dets">
+                                <h4><span>Category:</span><%=elem.category%></h4>
+                                <h4><span>Details:</span>For <%=elem.time%> hrs</h4>
+                                <h4><span>Price:</span>Rs <%=elem.price%></h4>
+                            </div>
+                        </div>
+                   <%})%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        document.querySelector("#list").addEventListener("click",function(){
+            document.querySelector(".product-area-wrapper").classList.remove("grid-view");
+            document.querySelector(".product-area-wrapper").classList.add("list-view");
+        })
+        document.querySelector("#grid").addEventListener("click",function(){
+            document.querySelector(".product-area-wrapper").classList.remove("list-view");
+            document.querySelector(".product-area-wrapper").classList.add("grid-view");
+        })
+    </script>
+</body>
+</html>

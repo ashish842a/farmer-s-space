@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Forget - Farmer's Space</title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+  <style>
+    .disabled4,.disabled3{
+      display: none;
+    }
+    #font3,#font4{
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h1 style="font-size: 20px;">Welcome to Farmer's Space</h1>
+        <h2>Forget Password</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form method="post" action="/otp">
+
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input id="email" type="text" name="email" placeholder="Email" required />
+              <div id="font3" class="disabled3">Enter a valid email</div>
+              <div id="font4" class="disabled4">Email is not found</div>
+            </div>
+
+            <!-- <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div> -->
+
+            <input class="button" type="submit" value="Submit" />
+          </form>
+          <!-- <a href="/forget">Forget password ?</a><br><br> -->
+          <a href="/signup">Don't have a account ?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+  <script src='https://use.fontawesome.com/4ecc3dbb0b.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <script>
+    let emaillen;
+    let emailTime;
+    let email = document.querySelector("#email");
+    let popupEmail = document.querySelector("#font3");
+    let popupEmailExits = document.querySelector("#font4");
+    email.addEventListener("input",function(){
+      popupEmailExits.classList.add("disabled4")
+      clearInterval(emailTime)
+      popupEmail.classList.add("disabled3");
+      emaillen = email.value.length
+      emailTime = setTimeout(() => {
+        axios.get('/validemail', {
+        params: {
+          email: `${email.value}`
+        }
+      })
+        .then(function (response) {
+          console.log(response.data.response);
+          if(response.data.response==false){
+            // console.log("haan");
+            popupEmail.classList.remove("disabled3")
+          }
+          else{
+            popupEmail.classList.add("disabled3")
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      }, 2000);
+    })
+
+    // checkemailforget
+    let forgetadata;
+    email.addEventListener("input",function(){
+      clearTimeout(forgetadata)
+      forgetadata = setTimeout(() => {
+        axios.get('/checkemailforget', {
+        params: {
+          email: `${email.value}`
+        }
+      })
+        .then(function (response) {
+          console.log(response.data.email);
+          if(response.data.email=="True"){
+            console.log("phle se nhi hai");
+            popupEmailExits.classList.remove("disabled4")
+          }else{
+            popupEmailExits.classList.add("disabled4")
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      }, 2000);
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/partialsNav.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            Farmer's Space
+        </div>
+        <div class="show">
+            <div id="links">
+                <a href="/profile">Home</a>
+                <a href="/profile/#services">Services</a>
+                <a href="/profile/#about">About</a>
+                <a href="/profile/#contact">Contact</a>
+                <a href="/solveproblem">Solve Problem</a>
+            </div>
+            <div id="nav-btns">
+                <!-- <i class="ri-shopping-cart-line"></i> -->
+                <!-- <a href="/dashboard"> <i class="ri-user-3-line"></i></a>
+                <a href="/signup"><button class="btn">Sign Up</button></a>
+                <a href="/login"><button class="btn">Login</button></a> -->
+
+                <% if(user=== null){ %>
+                    <a href="/signup"><button class="btn">Sign Up</button></a>
+                    <a href="/login"><button class="btn">Login</button></a>
+                <% } else { %>
+                    <a href="/dashboard"> <i class="ri-user-3-line"></i></a>
+                    <!-- <p><%= user.name.toUpperCase() %>&nbsp;&nbsp;</p> -->
+                    <a href="/logout"><button class="btn">Logout</button></a>
+
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <title>Query Page - Farmers Space</title>
+    <link rel="stylesheet" href="/stylesheets/solveProblem.css">
+</head>
+
+<style>
+    .product-image {
+        width: 350px;
+        height: 40px;
+        background-color: rgb(238, 229, 229);
+        display: flex;
+        align-items: center;
+
+        padding: 0 1vw;
+        cursor: pointer;
+    }
+        /* .searchbtn{
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            max-width: 90px;
+        } */
+</style>
+
+<body>
+
+    <div id="main">
+        <div id="move_top">
+            <i onclick="getBackToBeginning()" title="move_top" class="ri-arrow-up-s-line"></i>
+        </div>
+        <%- include ./partials/nav.ejs %>
+
+            <!-- nav -->
+            <div class="search-box">
+                <h1>Ask Us!</h1>
+                <div class="search" style="display: flex;">
+                    <i class="ri-search-2-line"></i>
+                    <input type="search" class="search-input" id="Search" placeholder="Search">
+                    <input class="searchbtn" type="button" value="Search" onclick="search(document.getElementById('Search').value)">
+                </div>
+           </div>
+            <!-- content start -->
+            <div class="q-box">
+                <h1>General Problems faced by Farmers: </h1>
+                <h4>1. Low crop prices and inadequate remuneration for their produce: </h4>
+                <p>Farmers often receive low prices for their crops due to the absence of a regulated market and the
+                    lack of bargaining power.</p>
+
+                <h4>2. Lack of access to credit and financial resources: </h4>
+                <p> Many farmers struggle to obtain adequate financing to invest in their farms, leading to low
+                    productivity and increased debt.</p>
+
+                <h4>3. Water scarcity and unreliable irrigation systems:</h4>
+                <p> Many farmers are dependent on monsoon rains for agriculture, and face challenges in accessing
+                    sufficient water for irrigation during dry seasons.</p>
+
+                <h4>4. Pests and disease outbreaks:</h4>
+                <p> Farmers often face crop losses due to the spread of pests and diseases, which can be devastating to
+                    their livelihoods.</p>
+
+                <h4>5. Soil degradation and declining soil fertility: </h4>
+                <p> Overuse of chemical fertilizers and pesticides can lead to soil degradation and declining soil
+                    fertility, affecting crop yields and farmers' income.</p>
+
+                <h4>6. Lack of storage and transportation facilities:</h4>
+                <p> Farmers often face losses due to the absence of proper storage and transportation facilities,
+                    leading to spoilage and wastage of their produce.</p>
+
+                <h4>7. Dependence on intermediaries and middlemen: </h4>
+                <p> Farmers often rely on intermediaries and middlemen to sell their produce, which can reduce their
+                    bargaining power and income.</p>
+
+                <h4>8. Lack of knowledge of government support and policies: </h4>
+                <p>Farmers may face challenges in accessing government support and subsidies, and may feel that
+                    government policies are not adequately addressing their concerns.</p>
+
+                <h4>9. Natural disasters and climate change: </h4>
+                <p>Farmers are vulnerable to natural disasters such as droughts, floods, and extreme weather events,
+                    which can lead to crop losses and financial losses.</p>
+
+                <h4>10. Lack of access to technology and information:</h4>
+                <p> Many farmers are not aware of new technologies and farming practices that can improve their
+                    productivity and income.</p>
+            </div>
+
+            <div class="s-box">
+                <h1>Solutions to the Problems:</h1>
+
+                <h4>1. Grow different things:</h4>
+                <p>Farmers can try growing different crops or livestock so they are not affected by changes in the
+                    market.<br>For better yield and profitable results, farmers are advised to cultivate multiple crops,
+                    including Apple, Pineapple, Papaya, Banana, Coconut, Ginger, Turmeric, and many others.</p>
+
+                <h4>2. Adoption of technology:</h4>
+                <p> Farmers can use technology such as precision agriculture, weather forecasting, and irrigation
+                    systems to optimize their farming practices and improve crop yields.</p>
+
+                <h4>3. Education and training: </h4>
+                <p>Providing education and training to farmers can help them adopt new technologies and farming
+                    practices, improve their management skills, and increase their incomes.<br>Many farmers are unaware
+                    of crop rotation. Education is pretty much improved in urban areas, but the govt has overlooked the
+                    need for the same in rural areas, particularly in the overall agriculture sector</p>
+
+                <h4>4. Market access:</h4>
+                <p>Farmers need access to markets where they can sell their products at fair prices. Governments and
+                    private organizations can help by providing information on markets and facilitating connections
+                    between farmers and buyers.</p>
+
+                <h4>5. Financial support: </h4>
+                <p>Farmers often need access to credit and other financial resources to purchase inputs, expand their
+                    operations, and manage risks. Governments and financial institutions can provide loans and insurance
+                    to help farmers overcome financial challenges.</p>
+
+                <h4>6. Better Water Management</h4>
+                <p>Water resources can be fully utilised through interstate coordination on water management; water can
+                    easily be delivered to the areas where it is most required. Connecting the rivers and constructing
+                    national waterways/channels will solve water supply problems and improve irrigation facility,
+                    helping farmers in case monsoon fails.</p>
+
+                <h4>7. Improving soil health:</h4>
+                <p>Maintaining soil health through practices like crop rotation, cover cropping, and reduced tillage can
+                    improve crop yields and soil fertility.</p>
+
+                <h4>8. Implementing integrated pest management:</h4>
+                <p> Using a combination of natural and chemical pest control methods, as well as monitoring and early
+                    detection, can reduce pest and disease damage to crops.</p>
+
+                <h4>9. Proper storage and preservation: </h4>
+                <p>Proper storage and preservation of crops can reduce waste and increase the shelf life of produce.</p>
+
+                <h4>10. Marketing and financial planning:</h4>
+                <p> Having a strong marketing strategy and sound financial planning can help farmers increase their
+                    income and achieve long-term success.</p>
+            </div>
+
+
+            <!-- contant section start -->
+            <section id="contact">
+                <div class="left">
+                    <h1 style="font-weight: 700; font-size: 30px;">Get in Touch</h1>
+
+                    <form action="/solveproblem" method="post" enctype="multipart/form-data">
+                        <div class="product-image" title="upload image">
+
+
+
+
+
+                            <div class="upload-image">
+                                <input type="file" name="query-image" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">
+                                FULL NAME
+                            </label>
+                            <input type="text" class="form__field" placeholder="Name" name="name" value="<%=user.name%>"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address
+                            </label>
+                            <input type="email" class="form__field" placeholder="Email" name="email"
+                                value="<%=user.email%>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Phone number
+                            </label>
+                            <input type="text" class="form__field" placeholder="Phone number" name="phone"
+                                value="<%=user.phone%>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">
+                                Message
+                            </label>
+                            <textarea name="message" class="form__field" id="" cols="30" rows="8"
+                                placeholder="Write your message here"></textarea>
+                        </div>
+                        <button class="btn">Submit</button>
+                    </form>
+                </div>
+                <div class="right">
+                    <h2>Let's get in touch</h2>
+                    <p>We're open here Lorem, ipsum dolor sit amet consectetur adipisicing elit. In?</p>
+                    <div class="info-wrap">
+                        <div class="info-box"><i class="ri-map-pin-2-fill"></i>
+                            <p><span>Address:</span> 234-B Minal Recidency, Bhopal, Madhya Pradesh, India</p>
+                        </div>
+                        <div class="info-box"><i class="ri-mail-fill"></i>
+                            <p><span>Email:</span> <a class="black"
+                                    href="mailto:helpfarmers@gmail.com">helpfarmers@gmail.com</a></p>
+                        </div>
+                        <div class="info-box"><i class="ri-phone-fill"></i>
+                            <p><span>Phone:</span> <a class="black" href="tel://1234567920">+ 1235 2355 98</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Contact section end-->
+            <%- include ./partials/footer.ejs %>
+    </div>
+
+    <script>
+        // move to top
+        window.onscroll = function () { display() };
+        function display() {
+            var icon = document.getElementById("move_top");
+            // console.log(window.scrollY);
+            if (window.scrollY > 500) {
+                icon.style.display = "initial";
+            }
+            else {
+                icon.style.display = "none";
+            }
+        }
+        function getBackToBeginning() {
+            window.scrollTo(0, 0);
+        }
+
+        // search
+       async function search(string) {
+           let data = await window.find(string);
+           console.log(data);
+        }
+        // function search() {
+        //     var searchText = $("#searchBar").val();
+        //     $(".searchText:contains('" + searchText + "')").css("background", "#FF0");
+        // }
+
+    </script>
+</body>
+
+</html>

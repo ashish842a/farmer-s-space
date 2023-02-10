@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive Registration Form</title>
+  <link rel="stylesheet" href="/stylesheets/signup.css">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h1 style="font-size: 20px;">Welcome to Farmer's Space</h1>
+        <h2>Registration Form</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form method="post" action="/signup">
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" name="name" placeholder="Name" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input id="username" type="text" name="username" placeholder="Username" required />
+              <div id="font" class="disabled">Username is Already exist</div>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input id="email" type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+              <div id="font3" class="disabled3">Enter a valid email</div>
+              <div id="font4" class="disabled4">Email is already exist</div>
+
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" name="phone" placeholder="Phone Number" required pattern="[789][0-9]{9}"/>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input id="aadhar" type="text" name="aadhar" placeholder="Aadhar Number" required maxlength="12" minlength="12"/>
+              <div id="font2" class="disabled2">Enter a valid aadhar number</div>
+              
+            </div>
+
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" name="city" id="city" placeholder="city" required />
+              <datalist id="repeat">
+                <option value="hii"></option>
+              </datalist>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" name="pincode" placeholder="Pincode" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" name="address" placeholder="Address" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Password" required />
+            </div>
+
+
+
+            <div class="input_field checkbox_option">
+              <input type="checkbox" id="cb1">
+              <label for="cb1">I agree with terms and conditions</label>
+            </div>
+
+            <input class="button" type="submit" value="Register" />
+          </form>
+          <a href="/login">Already have a account ?</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- cdn link -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src='https://use.fontawesome.com/4ecc3dbb0b.js'></script>
+
+  <script>
+    let aadhar = document.querySelector("#aadhar");
+    let popupaadhar = document.querySelector("#font2");
+     let aadharlen;
+    aadhar.addEventListener("input", function () {
+      popupaadhar.classList.add("disabled2")
+      aadharlen =  aadhar.value.length
+      // console.log(len);
+      if(aadharlen==12){
+        axios.get('/verifyaadhar', {
+        params: {
+          aadhar: `${aadhar.value}`
+        }
+      })
+        .then(function (response) {
+          // console.log(response.data.response);
+          if(response.data.response==false){
+            // console.log("glt hai");
+            popupaadhar.classList.remove("disabled2")
+          }else{
+            popupaadhar.classList.add("disabled2")
+          }
+          
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      }
+      
+    })
+
+
+    // check user exits or not
+    let username = document.querySelector("#username");
+    let popupUser = document.querySelector("#font");
+    let usernameLen;
+    let data;
+    function verifyusername(){
+      axios.get('/verifyusername', {
+        params: {
+          username: `${username.value}`
+        }
+      })
+        .then(function (response) {
+          console.log(response.data.message);
+          if(response.data.message=="True"){
+            console.log("haan");
+            popupUser.classList.remove("disabled")
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+
+   
+    username.addEventListener("input",function(){
+      popupUser.classList.add("disabled")
+      clearTimeout(data);
+      usernameLen = username.value.length;
+      if(usernameLen==3){
+       verifyusername();
+      }
+      else{
+        verifyusername();
+      }
+    })
+
+    // verifyemail
+    let emaillen;
+    let emailTime;
+    let email = document.querySelector("#email");
+    let popupEmail = document.querySelector("#font3");
+    let popupEmailExits = document.querySelector("#font4");
+    email.addEventListener("input",function(){
+      popupEmailExits.classList.add("disabled4")
+      clearInterval(emailTime)
+      popupEmail.classList.add("disabled3");
+      emaillen = email.value.length
+      emailTime = setTimeout(() => {
+        axios.get('/validemail', {
+        params: {
+          email: `${email.value}`
+        }
+      })
+        .then(function (response) {
+          console.log(response.data.response);
+          if(response.data.response==false){
+            // console.log("haan");
+            popupEmail.classList.remove("disabled3")
+          }
+          else{
+            popupEmail.classList.add("disabled3")
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      }, 2000);
+      
+
+      axios.get('/checkemail', {
+        params: {
+          email: `${email.value}`
+        }
+      })
+        .then(function (response) {
+          console.log(response.data.email);
+          if(response.data.email=="True"){
+            console.log("phle se hai");
+            popupEmailExits.classList.remove("disabled4")
+          }else{
+            popupEmailExits.classList.add("disabled4")
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
+    })
+
+    // for city
+    
+    function show() {
+      repeat.style.display="block"
+      axios.get(`/check/${text.value}`)
+          .then(function (response) {
+            // console.log(response);
+            allState = response.data.data;
+            // console.log(allState);
+            var clutter="";
+            response.data.data.forEach(function(elem){
+                console.log(elem);
+            clutter+=`<option>${elem.name}</option>`
+            })
+            // console.log(clutter);
+            document.querySelector("#repeat").innerHTML=clutter;
+            let option = document.querySelectorAll("option");
+            var opt;
+            for (let index = 0; index < option.length; index++) {
+              option[index].onclick = function(){
+                text.value = option[index].innerHTML;
+                repeat.style.display="none"
+              }
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          }); 
+    }
+
+        
+let text = document.querySelector("#city");
+text.addEventListener("input",function(){
+  console.log("typing..");
+    let len = (text.value.length);
+    let char= len%3;
+//   console.log(len , char);
+    if (char == 0) {
+      repeat.style.display="none"
+    } 
+    else {
+    setTimeout(() => {
+        show();
+    }, 1500);
+    } 
+})  
+   
+    
+   
+
+  </script>
+</body>
+
+</html>
